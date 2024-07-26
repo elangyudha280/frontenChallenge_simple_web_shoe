@@ -3,7 +3,7 @@ import React,{useState,useEffect,useRef} from 'react'
 
 // import component
 import Image from 'next/image'
-
+import Link from 'next/link'
 // imoprt pkg
 import Slider from 'react-slick'
 import { FaArrowRight,FaArrowLeft } from "react-icons/fa6";
@@ -91,7 +91,7 @@ export function SectionCardListHome() {
             daftarSepatu?.map((el,i)=>{
               return (
                 <React.Fragment key={el.id}>
-                    <div className="relative w-[98%] min-[665px]:w-[95%] min-[1151px]:w-[270px] ">
+                    <Link href={`/detail/${el.id}`} className="relative inline-block w-[98%] min-[665px]:w-[95%] min-[1151px]:w-[270px] ">
                       {/* card header list shoes */}
                       <div className="card_header_list_shoes relative w-full h-auto min-[665px]:h-[300px] overflow-hidden rounded-2xl">
                           <Image alt='' src={el.poster} className='w-full h-full object-cover object-center' />
@@ -109,7 +109,7 @@ export function SectionCardListHome() {
                               ${el.price}
                           </p>
                       </div>
-                  </div>
+                  </Link>
                 </React.Fragment>
                 )
             })

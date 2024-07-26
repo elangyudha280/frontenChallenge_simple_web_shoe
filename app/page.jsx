@@ -17,7 +17,6 @@ export default function Home() {
       {/*//! jumbotron  */}
       <section className="relative w-full flex flex-col gap-y-8 gap-x-3 rounded-[2em] p-8 bg-custom-slate-300 md:flex-row md:py-10 md:px-14">
           {/*//! left content */}
-          {/* border-2 border-red-500 */}
           <section className="flex-1 w-full flex flex-col gap-2 ">
             {/* title */}
             <div className="">
