@@ -22,6 +22,7 @@ export function SectionCardListHome() {
   const settings = {
     dots: false,
     infinite: true,
+    draggable:true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
