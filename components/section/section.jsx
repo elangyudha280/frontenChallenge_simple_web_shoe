@@ -57,9 +57,7 @@ export function SectionCardListHome() {
       },
     ]
   };
-  useEffect(() => {
-    console.log(currentSlide)
-  }, [currentSlide])
+
   
   return (
     <div className="relative w-full mt-3">
