@@ -37,7 +37,7 @@ export function SectionCardListHome() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: false,
+          infinite: true,
         }
       },
       {
@@ -45,14 +45,14 @@ export function SectionCardListHome() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: false,
+          infinite: true,
         }
       },{
         breakpoint: 665,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: false,
+          infinite: true,
         }
       },
     ]
@@ -67,8 +67,7 @@ export function SectionCardListHome() {
       <div className="relative w-full my-4  flex gap-3 justify-end min-[1151px]:hidden">
             {/* btn previous */}
             <button onClick={previous} type='button' className={`
-            flex gap-2 flex-wrap justify-center items-center p-2 font-semibold  rounded-md transition-all duration-200 max-[320px]:w-full 
-            ${currentSlide === 0 ? ' text-slate-950  bg-transparent ring-2 ring-custom-black-800' : 'text-white bg-custom-black-800 ring-0  hover:text-slate-950  hover:bg-transparent hover:ring-2 hover:ring-custom-black-800'}
+            flex gap-2 flex-wrap justify-center items-center p-2 font-semibold  rounded-md transition-all duration-200 max-[320px]:w-full text-white bg-custom-black-800 ring-0  hover:text-slate-950  hover:bg-transparent hover:ring-2 hover:ring-custom-black-800
               `}>
                   <FaArrowLeft className='text-[12px] mt-0.5'/>
             </button>
@@ -76,7 +75,7 @@ export function SectionCardListHome() {
             {/* btn next */}
             <button onClick={next} type='button' className={`
               flex gap-2 flex-wrap justify-center items-center p-2 font-semibold  rounded-md transition-all duration-200 max-[320px]:w-full
-               ${currentSlide ===1 ? ' text-slate-950  bg-transparent ring-2 ring-custom-black-800' : 'text-white bg-custom-black-800 ring-0  hover:text-slate-950  hover:bg-transparent hover:ring-2 hover:ring-custom-black-800'}
+             text-white bg-custom-black-800 ring-0  hover:text-slate-950  hover:bg-transparent hover:ring-2 hover:ring-custom-black-800
               `}>
                   <FaArrowRight className='text-[12px] mt-0.5'/>
             </button>
