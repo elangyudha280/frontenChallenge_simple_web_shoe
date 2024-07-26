@@ -1,9 +1,11 @@
 'use client'
 import React,{useState,useEffect,useRef} from 'react'
-
+import { Suspense } from 'react'
 // import component
 import Image from 'next/image'
 import Link from 'next/link'
+import { CardSkeletonImgDetailShoes,CardOrderDetailShoes } from '@/components/cards/cards'
+
 // imoprt pkg
 import Slider from 'react-slick'
 import { FaArrowRight,FaArrowLeft } from "react-icons/fa6";
@@ -13,6 +15,7 @@ import iconShoes from '@/assets/images/shoes_1.svg'
 // import store
 import useShoes from '@/utils/dataShoes'
 
+//! SECTION CARD LIST HOME
 export function SectionCardListHome() {
   let daftarSepatu = useShoes(state => state.daftarSepatu)
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -120,3 +123,38 @@ export function SectionCardListHome() {
   )
 }
   
+
+//! SECTION DETAIL SHOES
+export function SectionDetailShoes({idShoes}){
+  let daftarSepatu = useShoes(state => state.daftarSepatu)
+  let [detailShoes,setDetailShoes] = useState(undefined)
+  useEffect(() => {
+    // find detail shoes
+    const findShoes = daftarSepatu?.find(el => el.id == idShoes)
+    console.log(findShoes)
+    setDetailShoes([findShoes])
+  }, [])
+  
+  return (
+    <section className="relative w-full flex gap-y-5 gap-x-10 flex-col min-[962px]:flex-row">
+      {
+        detailShoes?.map(el =>{
+          return (
+            <React.Fragment key={el.id}>
+               {/* img shoes */}
+              <Suspense fallback={<CardSkeletonImgDetailShoes/>}>
+                <div className="relative w-full  h-[410px] overflow-hidden rounded-[2em] min-[962px]:w-[530px]">
+                    <Image alt='' src={el.poster} className='w-full h-full object-center object-cover select-none'/>
+                </div>
+              </Suspense>
+
+              {/* card price shoes */}
+              <CardOrderDetailShoes title={el.title} subTitle={el.description} price={el.price}/>
+            </React.Fragment>
+          )
+        })
+      }
+     
+    </section>
+  )
+}
