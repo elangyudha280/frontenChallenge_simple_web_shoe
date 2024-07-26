@@ -40,3 +40,5 @@ const useShoes = create((set,get)=>({
     ]
 }))
 
+export default useShoes
+
