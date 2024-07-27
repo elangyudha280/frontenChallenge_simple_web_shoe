@@ -15,8 +15,14 @@ const dmsans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Home Page",
+  title: {
+    absolute:'Home Page',
+    default:'-'
+  },
   description: "simple E-commerce simple shoes",
+  keywords: ['Next.js', 'React', 'JavaScript'],
+  authors: [{ name: 'elangyudha280' }],
+  creator: 'elangyudha280',
 };
 
 export default function RootLayout({ children }) {
