@@ -1,8 +1,12 @@
 'use client'
+
+import React,{Suspense} from 'react'
+
 // import component
 import Image from 'next/image'
 import Link from 'next/link'
 
+import iconimg from '@/assets/images/shoes_1.svg'
 
 import { FaMinus,FaPlus } from "react-icons/fa6";
 
@@ -69,4 +73,57 @@ export function CardOrderDetailShoes({title,subTitle,price}){
                    </div>
               </div>
     )
+}
+
+//! CARD DETAIL ORDER SHOES
+export function CardDetailOrderShoes(){
+  return (
+    <div className="relative w-full pb-[2em] border-b-2 border-b-slate-200 flex gap-2 flex-col min-[500px]:flex-row">
+        {/* img content */}
+        <div className="w-full h-[300px] overflow-hidden rounded-[1.5em] select-none min-[500px]:h-[200px]  min-[500px]:w-[200px]">
+          {/* image  */}
+          <Suspense fallback={
+            <div className="animate-pulse w-full h-full  overflow-hidden rounded-[1.5em] select-none bg-slate-200"></div>
+          }>
+            <Image alt='' src={iconimg} sizes='any' className='w-full h-full object-center object-cover'/>
+          </Suspense>
+        </div>
+        
+          {/* right content */}
+          <div className="relative flex-1  w-full h-auto   px-4 flex flex-col  ">
+            {/* section title */}
+            <div className="header_right relative w-full flex gap-2 items-center">
+              {/* title shoes */}
+              <h2 className="text-[1.5em] font-medium  text-custom-black-800 flex-1 line-clamp-2">Nike</h2>
+              {/* price */}
+              <h2 className="m-0 p-0 text-[1em] font-bold  ">$99.99</h2>
+            </div>
+              {/* section description */}
+             <div className="flex-1">
+             <p className="w-full line-clamp-3 text-slate-500 "> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quaerat dolorem officiis iure nemo expedita quibusdam perferendis quidem modi blanditiis. lore</p> 
+             </div>
+
+             {/* button count */}
+             <div className="flex items-center gap-y-3 gap-x-5 max-[500px]:mt-4">
+                    <div className="w-[120px] h-[40px]  flex rounded-md border-[1px] border-slate-200">
+                          {/* button decrement */}
+                          <button className="w-[40px]  text-slate-400 grid place-items-center ">
+                          <FaMinus/>
+                          </button>
+                          {/* count */}
+                          <p className="flex-1 m-0 p-0 font-medium line-clamp-1 grid place-items-center">
+                            1
+                          </p>
+                          {/* button increment */}
+                          <button className="w-[40px] text-slate-400 grid place-items-center ">
+                          <FaPlus/>
+                          </button>
+                    </div>
+
+                    {/* button remove */}
+                    <button className="decoration-slate-600 underline text-slate-600 font-semibold ">Remove</button>
+             </div>
+          </div>  
+    </div>
+  )
 }
