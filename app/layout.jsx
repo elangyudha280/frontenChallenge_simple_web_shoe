@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
               <Navbar/>
             {/*//! CONTENT */}
             <section className="relative flex-1 w-full h-full px-4 mx-auto  overflow-x-hidden overflow-y-auto">
-              <div className="relative max-w-6xl mx-auto pt-5 pb-[5em]">
+              <div className="relative max-w-6xl mx-auto pt-5 pb-[4.5em]">
                  {children}
               </div>
             </section>
