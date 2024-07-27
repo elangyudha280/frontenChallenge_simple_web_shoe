@@ -6,6 +6,8 @@ import Link from 'next/link'
 
 import { FaMinus,FaPlus } from "react-icons/fa6";
 
+import { formatToDollar } from '@/modules/dolar';
+
 export function CardSkeletonImgDetailShoes(){
     return (
         <div className="relative w-full min-[962px]:w-[530px]h-[450px] overflow-hidden rounded-[2em] animate-pulse flex space-x-4 bg-slate-300">
@@ -29,7 +31,7 @@ export function CardOrderDetailShoes({title,subTitle,price}){
                     </h2>
                     {/* price */}
                     <p className="mt-2 p-0 line-clamp-1 text-[1.5em] font-medium text-custom-black-800">
-                      ${price}
+                      {formatToDollar(price)}
                     </p>
                  </div>
 

@@ -14,7 +14,7 @@ import iconShoes from '@/assets/images/shoes_1.svg'
 
 // import store
 import useShoes from '@/utils/dataShoes'
-
+import { formatToDollar } from '@/modules/dolar'
 //! SECTION CARD LIST HOME
 export function SectionCardListHome() {
   let daftarSepatu = useShoes(state => state.daftarSepatu)
@@ -109,7 +109,7 @@ export function SectionCardListHome() {
                              {el.description}
                           </p>
                           <p className="mt-2 p-0 line-clamp-1 font-medium text-custom-black-800">
-                              ${el.price}
+                              {formatToDollar(el.price)}
                           </p>
                       </div>
                   </Link>
