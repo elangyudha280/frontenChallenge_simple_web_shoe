@@ -158,3 +158,12 @@ export function SectionDetailShoes({idShoes}){
     </section>
   )
 }
+
+//! SECTION PAGE ORDER
+export function SectionOrderPage(){
+    return (
+      <section className="relative w-full ">
+
+      </section>
+    )
+}
