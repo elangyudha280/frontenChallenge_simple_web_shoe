@@ -181,7 +181,7 @@ export function SectionOrderPage(){
               {
                 dataInvoice?.length === 0 ?
                 <h2 className="text-center font-normal capitalize">
-                  belum ada sepatu yg kamu ingin beli...
+                  belum ada sepatu yang kamu ingin beli...
                 </h2>
                 :
                   dataInvoice?.map(el =>{
