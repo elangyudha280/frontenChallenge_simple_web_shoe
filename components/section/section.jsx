@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 // import component
 import Image from 'next/image'
 import Link from 'next/link'
-import { CardSkeletonImgDetailShoes,CardOrderDetailShoes,CardDetailOrderShoes } from '@/components/cards/cards'
+import { CardSkeletonImgDetailShoes,CardOrderDetailShoesSkeleton,CardOrderDetailShoes,CardDetailOrderShoes } from '@/components/cards/cards'
 
 // imoprt pkg dan utils
 import Slider from 'react-slick'
@@ -97,6 +97,8 @@ export function SectionCardListHome() {
             daftarSepatu?.map((el,i)=>{
               return (
                 <React.Fragment key={el.id}>
+                 
+                  <Suspense fallback={ <CardOrderDetailShoesSkeleton/>}>
                     <Link href={`/detail/${el.id}`} className="relative inline-block w-[98%] min-[665px]:w-[95%] min-[1151px]:w-[270px] ">
                       {/* card header list shoes */}
                       <div className="card_header_list_shoes relative w-full h-auto min-[665px]:h-[300px] overflow-hidden rounded-2xl">
@@ -115,7 +117,8 @@ export function SectionCardListHome() {
                               {formatToDollar(el.price)}
                           </p>
                       </div>
-                  </Link>
+                    </Link>  
+                  </Suspense>    
                 </React.Fragment>
                 )
             })

@@ -21,6 +21,23 @@ export function CardSkeletonImgDetailShoes(){
         </div>
     )
 }
+export function CardOrderDetailShoesSkeleton(){
+  return (
+    <div  className="relative inline-block w-[98%] min-[665px]:w-[95%] min-[1151px]:w-[270px] animate-pulse">
+    {/* card header list shoes */}
+    <div className="card_header_list_shoes relative w-full h-auto min-[665px]:h-[300px] overflow-hidden rounded-2xl bg-slate-300">
+        {/* <Image alt='' src={el.poster} className='w-full h-full object-cover object-center' /> */}
+    </div>
+
+    {/* card body list shoes */}
+    <div className="relative w-full py-3">
+        <h2 className="title font-semibold w-full h-[20px] line-clamp-2 text-[16px] bg-slate-300 rounded-sm"></h2>
+        <p className="m-0 p-0 line-clamp-3 w-full h-[20px] font-medium text-slate-500 bg-slate-300 rounded-sm"></p>
+        <p className="mt-2 p-0 line-clamp-1 w-full h-[20px] font-medium text-custom-black-800 bg-slate-300 rounded-s"></p>
+    </div>
+  </div>
+  )
+}
 
 export function CardOrderDetailShoes({title,subTitle,price,detail}){
   let setDataInvoice = useInvoice(state => state.setDataInvoice)
