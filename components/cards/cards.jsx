@@ -8,9 +8,8 @@ import Link from 'next/link'
 
 
 import { FaMinus,FaPlus } from "react-icons/fa6";
-
+import { CiShoppingCart } from "react-icons/ci";
 import { formatToDollar } from '@/modules/dolar';
-
 import useInvoice from '@/utils/dataInvoice'
 
 export function CardSkeletonImgDetailShoes(){
@@ -196,4 +195,13 @@ export function CardDetailOrderShoes({detailData}){
           </div>  
     </div>
   )
+}
+
+//! CARD DEFAULT SUMMARY ORDER
+export function CardDefaultSummary(){
+ return (
+  <div className="relative w-full p-5 grid place-items-center bg-white rounded-[1em] shadow-[0_4.5px_20px_0px_rgba(0,0,0,0.1)]">
+  <CiShoppingCart className='text-[9em]'/>
+</div>
+ )
 }
