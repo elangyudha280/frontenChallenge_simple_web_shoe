@@ -201,7 +201,7 @@ export function CardDetailOrderShoes({detailData}){
 export function CardDefaultSummary(){
  return (
   <div className="relative w-full p-5 grid place-items-center bg-white rounded-[1em] shadow-[0_4.5px_20px_0px_rgba(0,0,0,0.1)]">
-  <CiShoppingCart className='text-[9em]'/>
-</div>
+    <CiShoppingCart className='text-[9em]'/>
+  </div>
  )
 }

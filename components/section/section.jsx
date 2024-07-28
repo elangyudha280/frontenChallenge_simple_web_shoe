@@ -213,7 +213,7 @@ export function SectionOrderPage(){
                     {/* subtotal */}
                     <div className="m-0 p-0 w-full  flex gap-2 items-center">
                         <p className="text-custom-black-800 font-semibold flex-1">Subtotal</p>
-                        <p className="text-custom-black-800 font-semibold ">{formatToDollar(90.00)}</p>
+                        <p className="text-custom-black-800 font-semibold ">{formatToDollar(dataInvoice?.map(el => el.totalPrice).reduce((acc,curr)=>acc+curr))}</p>
                     </div>
   
                     {/* delivery */}
@@ -241,7 +241,7 @@ export function SectionOrderPage(){
                     {/* total */}
                     <div className="m-0 p-0 w-full  flex gap-2  items-center">
                         <p className="text-custom-black-800 font-semibold flex-1 text-[1.3em]">Total</p>
-                        <p className="text-custom-black-800 font-semibold ">{formatToDollar(90.00)}</p>
+                        <p className="text-custom-black-800 font-semibold ">{formatToDollar((dataInvoice?.map(el => el.totalPrice).reduce((acc,curr)=>acc+curr)+20.00+6.00)-6.00)}</p>
                     </div>
   
                     {/* button checkout */}
