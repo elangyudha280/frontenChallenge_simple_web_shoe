@@ -60,6 +60,9 @@ const useInvoice = create((set,get)=>({
               // handle duplikat
               const handleDuplikat = get().dataInvoice?.find(el => el.idShoes !== data?.idShoes) || []
               return handleDuplikat?.length !== 0 ? set({dataInvoice:[handleDuplikat,mergeData]}) :  set({dataInvoice:[mergeData]})
+    },
+    setResetDataInvoice(){
+        return set({dataInvoice:[]})
     }
 }))
 
