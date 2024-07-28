@@ -174,7 +174,7 @@ export function SectionOrderPage(){
             <section className="relative w-full flex flex-col gap-5 mt-5">
                 {/* card product shoes */}
                 <CardDetailOrderShoes/>
-                <CardDetailOrderShoes/>
+                <CardDetailOrderShoes/> 
                 <CardDetailOrderShoes/>
             </section>  
         </section>
