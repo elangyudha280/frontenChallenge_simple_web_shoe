@@ -17,6 +17,7 @@ import iconShoes from '@/assets/images/shoes_1.svg'
 
 // import store
 import useShoes from '@/utils/dataShoes'
+import useInvoice from '@/utils/dataInvoice'
 //! SECTION CARD LIST HOME
 export function SectionCardListHome() {
   let daftarSepatu = useShoes(state => state.daftarSepatu)
@@ -133,8 +134,11 @@ export function SectionDetailShoes({idShoes}){
   useEffect(() => {
     // find detail shoes
     const findShoes = daftarSepatu?.find(el => el.id == idShoes)
-    console.log(findShoes)
     setDetailShoes([findShoes])
+
+    return ()=>{
+      return  setDetailShoes([])
+    }
   }, [])
   
   return (
@@ -151,7 +155,7 @@ export function SectionDetailShoes({idShoes}){
               </Suspense>
 
               {/* card price shoes */}
-              <CardOrderDetailShoes title={el.title} subTitle={el.description} price={el.price}/>
+              <CardOrderDetailShoes title={el.title} subTitle={el.description} price={el.price} detail={detailShoes}/>
             </React.Fragment>
           )
         })
@@ -163,6 +167,8 @@ export function SectionDetailShoes({idShoes}){
 
 //! SECTION PAGE ORDER
 export function SectionOrderPage(){
+
+  let [dataInvoice,setDataInvoice] = useInvoice(state => [state.dataInvoice,state.setDataInvoice])
     return (
       <section className="relative w-full flex gap-x-5 gap-y-10 flex-col min-[810px]:flex-row">
 
@@ -172,10 +178,16 @@ export function SectionOrderPage(){
 
             {/* list shoes cart */}
             <section className="relative w-full flex flex-col gap-5 mt-5">
-                {/* card product shoes */}
-                <CardDetailOrderShoes/>
-                <CardDetailOrderShoes/> 
-                <CardDetailOrderShoes/>
+              {
+                dataInvoice?.length === 0 ?
+                <h2 className="text-center font-normal capitalize">
+                  belum ada sepatu yg kamu ingin beli...
+                </h2>
+                :
+                  dataInvoice?.map(el =>{
+                    return <CardDetailOrderShoes key={el.idShoes} detailData={el}/>
+                  })
+              }
             </section>  
         </section>
 

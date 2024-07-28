@@ -11,7 +11,12 @@ import { BiShoppingBag } from "react-icons/bi";
 // import img
 import iconNav from '@/assets/images/logo.svg'
 
+// import store
+import useInvoice from '@/utils/dataInvoice';
+
 export function  Navbar() {
+    
+  let dataInvoice = useInvoice(state => state.dataInvoice)
   return (
    <nav className="relative w-full p-3 border-b-2 border-b-slate-100">
     <div  className="max-w-6xl relative mx-auto  flex items-center justify-between flex-wrap gap-2  max-[320px]:flex-col">
@@ -29,9 +34,12 @@ export function  Navbar() {
                 <p className="m-0 p-0 text-[13px] mt-[1px]">View Cart</p>
 
                 {/* icont count */}
-                {/* <div className="p-1 px-2.5 grid place-items-center rounded-full text-white text-[9px] font-bold bg-orange-500 ">
-                    <p className="line-clamp-1 ">0</p>
-                </div> */}
+                {
+                    dataInvoice?.length !== 0 &&  <div className="p-1 px-2.5 grid place-items-center rounded-full text-white text-[9px] font-bold bg-orange-500 ">
+                        <p className="line-clamp-1 ">{dataInvoice?.length}</p>
+                    </div> 
+                }
+               
             </Link>
         </div>
     </div>
