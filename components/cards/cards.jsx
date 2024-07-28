@@ -39,6 +39,7 @@ export function CardOrderDetailShoesSkeleton(){
   )
 }
 
+//!CARD DETAIL SHOES
 export function CardOrderDetailShoes({title,subTitle,price,detail}){
   let setDataInvoice = useInvoice(state => state.setDataInvoice)
   let dataInvoice = useInvoice(state => state.dataInvoice)
@@ -129,6 +130,12 @@ export function CardOrderDetailShoes({title,subTitle,price,detail}){
 
 //! CARD DETAIL ORDER SHOES
 export function CardDetailOrderShoes({detailData}){
+  let setRemoveShoesInvoice = useInvoice(state => state.setRemoveShoesInvoice)
+
+  // event handle remove order shoes
+  const handleRemoveHanldeShoes = ()=>{
+    setRemoveShoesInvoice(detailData)
+  }
   return (
     <div className="relative w-full pb-[2em] border-b-2 border-b-slate-200 flex gap-2 flex-col min-[500px]:flex-row">
         {/* img content */}
@@ -173,7 +180,9 @@ export function CardDetailOrderShoes({detailData}){
                     </div>
 
                     {/* button remove */}
-                    <button className="decoration-slate-600 underline text-slate-600 font-semibold ">Remove</button>
+                    <button
+                    onClick={handleRemoveHanldeShoes}
+                    className="decoration-slate-600 underline text-slate-600 font-semibold ">Remove</button>
              </div>
           </div>  
     </div>

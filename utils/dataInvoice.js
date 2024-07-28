@@ -36,6 +36,13 @@ const useInvoice = create((set,get)=>({
        })
 
         return set({dataInvoice:[...get().dataInvoice,mapingData].flat()})
+    },
+    setRemoveShoesInvoice(data){
+        console.log(data)
+        // filter data selain current shoes
+        const findElseCurrentShoes = get().dataInvoice?.filter(el => el.idShoes !== data?.idShoes);
+
+    return set({dataInvoice:findElseCurrentShoes})
     }
 }))
 
