@@ -1,6 +1,6 @@
 'use client'
 
-import React,{Suspense} from 'react'
+import React,{Suspense, useState} from 'react'
 
 // import component
 import Image from 'next/image'
@@ -21,6 +21,23 @@ export function CardSkeletonImgDetailShoes(){
 }
 
 export function CardOrderDetailShoes({title,subTitle,price}){
+
+  let [orderCount,setOrderCount] = useState(0);
+
+  // handle order count
+  const handleOrderCount = (type,event)=>{
+    if(type === 'incrementCount'){
+    
+      setOrderCount(state => state+1)
+      return
+    }
+    setOrderCount(state => state < 1 ? 0 :state-1)
+  }
+
+  // handle order
+  const handleOrder = ()=>{
+    setOrderCount(0)
+  }
     return (
         <div className="flex-1 w-full h-auto bg-white shadow-[0_4.5px_20px_0px_rgba(0,0,0,0.1)]  rounded-[1.5em] flex flex-col"> 
                  {/* section desc */}
@@ -50,22 +67,30 @@ export function CardOrderDetailShoes({title,subTitle,price}){
                     <div className="flex-1 h-full">
                       <div className="w-[150px] h-[40px] mt-2 flex rounded-md border-[1px] border-slate-300">
                           {/* button decrement */}
-                          <button className="w-[40px]  text-slate-400 grid place-items-center ">
+                          <button
+                          onClick={handleOrderCount.bind(this,'decrementCount')}
+                          className={`w-[40px]   grid place-items-center 
+                          ${orderCount < 1 ? 'text-slate-400' : 'text-custom-black-800' }
+                          `}>
                           <FaMinus/>
                           </button>
                           {/* count */}
                           <p className="flex-1 m-0 p-0 font-medium line-clamp-1 grid place-items-center">
-                            1
+                            {orderCount}
                           </p>
                           {/* button increment */}
-                          <button className="w-[40px] text-slate-400 grid place-items-center ">
+                          <button
+                          onClick={handleOrderCount.bind(this,'incrementCount')}
+                          className="w-[40px] text-custom-black-800 grid place-items-center ">
                           <FaPlus/>
                           </button>
                       </div>
                     </div>
 
                     {/* button add to card */}
-                    <div className="relative w-full flex mt-5 min-[962px]:mt-2">
+                    <div 
+                    onClick={handleOrder}
+                    className="relative w-full flex mt-5 min-[962px]:mt-2">
                       <button type='button' className="w-full flex gap-2 flex-wrap justify-center items-center px-2 py-3 font-semibold  rounded-md transition-all duration-200 max-[320px]:w-full text-white bg-custom-black-800 ring-0 hover:text-slate-950  hover:bg-transparent hover:ring-2 hover:ring-custom-black-800">
                           <p className="m-0 p-0 text-[17px] mt-[1px]">Add to Cart</p>
                       </button>
