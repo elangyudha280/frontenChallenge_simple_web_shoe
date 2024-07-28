@@ -20,9 +20,9 @@ const useInvoice = create((set,get)=>({
             // handle duplikat
             const handleDuplikat = get().dataInvoice?.find(el => el.idShoes !== data[0]?.id) || []
 
-            console.log(handleDuplikat)
             return handleDuplikat?.length !== 0 ? set({dataInvoice:[handleDuplikat,mergeData]}) :  set({dataInvoice:[mergeData]})
         }
+
        let mapingData = data?.map((el,i) => {
         return {
             idShoes:el.id,
@@ -38,11 +38,28 @@ const useInvoice = create((set,get)=>({
         return set({dataInvoice:[...get().dataInvoice,mapingData].flat()})
     },
     setRemoveShoesInvoice(data){
-        console.log(data)
         // filter data selain current shoes
         const findElseCurrentShoes = get().dataInvoice?.filter(el => el.idShoes !== data?.idShoes);
-
     return set({dataInvoice:findElseCurrentShoes})
+    },
+    setIncrementOrderShoes(data,totalCount,type){
+          // filter data invoice cari yg sama 
+          let findShoesSame = get().dataInvoice?.find(el => el.idShoes === data?.idShoes);
+
+          // check jika datanya udh ada di invoice atau update data
+              // find data current shoes
+              let findData = get().dataInvoice?.find(el => el.idShoes === data?.idShoes);
+
+              // merge data
+              const mergeData = {
+                  ...findData,
+                    totalPrice:type === 'increment' ? (data.normalPrice * totalCount) + data.totalPrice : findData?.totalOrder === 1 ? findData?.totalPrice : findData?.totalPrice - data.normalPrice  ,
+                  totalOrder:type === 'increment' ? findData?.totalOrder + totalCount : findData?.totalOrder < 2 ? 1 : findData?.totalOrder - totalCount 
+              }
+
+              // handle duplikat
+              const handleDuplikat = get().dataInvoice?.find(el => el.idShoes !== data?.idShoes) || []
+              return handleDuplikat?.length !== 0 ? set({dataInvoice:[handleDuplikat,mergeData]}) :  set({dataInvoice:[mergeData]})
     }
 }))
 

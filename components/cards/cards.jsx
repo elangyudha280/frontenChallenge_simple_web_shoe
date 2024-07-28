@@ -6,7 +6,6 @@ import React,{Suspense, useState,useEffect} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import iconimg from '@/assets/images/shoes_1.svg'
 
 import { FaMinus,FaPlus } from "react-icons/fa6";
 
@@ -130,11 +129,16 @@ export function CardOrderDetailShoes({title,subTitle,price,detail}){
 
 //! CARD DETAIL ORDER SHOES
 export function CardDetailOrderShoes({detailData}){
-  let setRemoveShoesInvoice = useInvoice(state => state.setRemoveShoesInvoice)
+  let [setRemoveShoesInvoice,setIncrementOrderShoes] = useInvoice(state => [state.setRemoveShoesInvoice,state.setIncrementOrderShoes])
 
   // event handle remove order shoes
   const handleRemoveHanldeShoes = ()=>{
     setRemoveShoesInvoice(detailData)
+  }
+
+  // handle count order
+  const handleCountOrder = (type)=>{
+      setIncrementOrderShoes(detailData,1,type)
   }
   return (
     <div className="relative w-full pb-[2em] border-b-2 border-b-slate-200 flex gap-2 flex-col min-[500px]:flex-row">
@@ -166,7 +170,10 @@ export function CardDetailOrderShoes({detailData}){
              <div className="flex items-center gap-y-3 gap-x-5 max-[500px]:mt-4">
                     <div className="w-[120px] h-[40px]  flex rounded-md border-[1px] border-slate-200">
                           {/* button decrement */}
-                          <button className="w-[40px]  text-slate-400 grid place-items-center ">
+                          <button 
+                          disabled={detailData?.totalOrder === 1 ? true :false}
+                          onClick={handleCountOrder.bind(this,'decrement')}
+                          className="w-[40px]  text-slate-400 grid place-items-center ">
                           <FaMinus/>
                           </button>
                           {/* count */}
@@ -174,7 +181,9 @@ export function CardDetailOrderShoes({detailData}){
                             {detailData?.totalOrder}
                           </p>
                           {/* button increment */}
-                          <button className="w-[40px] text-slate-400 grid place-items-center ">
+                          <button
+                          onClick={handleCountOrder.bind(this,'increment')}
+                          className="w-[40px] text-slate-400 grid place-items-center ">
                           <FaPlus/>
                           </button>
                     </div>
