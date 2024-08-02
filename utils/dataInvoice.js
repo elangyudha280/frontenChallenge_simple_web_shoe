@@ -10,13 +10,13 @@ const useInvoice = create((set,get)=>({
         if(findShoesSame !== undefined){
             // find data
             let findData = get().dataInvoice?.find(el => el.idShoes === data[0]?.id);
-           
             // merge data
             const mergeData = {
                 ...findData,
-                totalPrice:(data[0].price * totalOrder) + findData?.price,
+                totalPrice:(data[0].price * totalOrder) + findData?.normalPrice,
                 totalOrder:findData?.totalOrder + totalOrder
             }
+
             // handle duplikat
             const handleDuplikat = get().dataInvoice?.find(el => el.idShoes !== data[0]?.id) || []
 

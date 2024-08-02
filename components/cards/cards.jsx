@@ -59,6 +59,7 @@ export function CardOrderDetailShoes({title,subTitle,price,detail}){
     setDataInvoice(detail,orderCount)
     setOrderCount(0)
   }
+  
     return (
         <div className="flex-1 w-full h-auto bg-white shadow-[0_4.5px_20px_0px_rgba(0,0,0,0.1)]  rounded-[1.5em] flex flex-col"> 
                  {/* section desc */}
